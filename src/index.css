@@ -1,0 +1,203 @@
+@import url("https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&family=JetBrains+Mono:wght@400;500&display=swap");
+@import "tailwindcss";
+@import "tw-animate-css";
+
+@custom-variant dark (&:is(.dark *));
+
+/*
+==========================================================================
+【AI HANDOVER NOTE】
+1. DESIGN PHILOSOPHY:
+   - The design system for 'Genius Classes' is rooted in 'Academic Trust & Professional Clarity'. It follows a Neo-minimalist approach with a focus on structured information hierarchy, ensuring parents and students feel a sense of stability and premium quality.
+   - Visual style utilizes 'Physicality with Depth': using subtle rim-lights (inner borders) and soft ambient shadows to make course cards and topper profiles feel tangible and prestigious.
+   - The choice of a 'Clean Blue + White' palette directly addresses the psychological need for reliability and intelligence in educational environments, avoiding the clutter of typical coaching templates.
+
+2. TYPOGRAPHY:
+   - Sans (Plus Jakarta Sans): Selected for its geometric yet friendly personality. It provides excellent legibility at small sizes (for notes) and a commanding presence in headlines (for the slogan).
+   - Mono (JetBrains Mono): Used exclusively for the Admin Panel metrics, student IDs, and data-heavy tables to ensure numerical clarity and a high-tech management feel.
+
+3. COLOR SYSTEM:
+   - The primary brand hue (H: 255) is a 'Royal Academic Blue'. It strikes a balance between traditional institutional blue and a modern vibrant digital sapphire.
+   - --primary is the heavy-hitter for CTAs and the Slogan. --accent is a softer, desaturated version used for hover states and subtle highlights behind 'New' badges or features.
+   - Success colors (H: 150) are used for result percentages, while Destructive (H: 25) is reserved for admin delete actions.
+
+4. USAGE GUIDE:
+   - Layout: The Home page uses a 'Modular Surface' (Bento) layout for the Features section to highlight Personal Attention and Batch Size effectively.
+   - Interaction: Smooth hover animations should include a slight Y-axis lift and a primary-colored glow (ring) to signify interactivity.
+   - Admin Access: The secret trigger (hold and drag) should be implemented on the 'Thank you' text component with a subtle CSS transition to avoid accidental triggers while remaining accessible to staff.
+==========================================================================
+*/
+
+:root {
+  /* Typography */
+  --font-sans: Plus Jakarta Sans, system-ui, -apple-system, sans-serif;
+  --font-mono: JetBrains Mono, monospace;
+  
+  /* Radius */
+  --radius: 0.625rem;
+
+  /* Core UI Tokens */
+  --background: oklch(0.99 0.005 255);
+  --foreground: oklch(0.18 0.04 255);
+  --card: oklch(1 0 0);
+  --card-foreground: oklch(0.18 0.04 255);
+  --popover: oklch(1 0 0);
+  --popover-foreground: oklch(0.18 0.04 255);
+  --primary: oklch(0.48 0.18 255);
+  --primary-foreground: oklch(0.98 0.01 255);
+  --secondary: oklch(0.96 0.02 255);
+  --secondary-foreground: oklch(0.35 0.12 255);
+  --muted: oklch(0.96 0.01 255);
+  --muted-foreground: oklch(0.45 0.03 255);
+  --accent: oklch(0.93 0.04 255);
+  --accent-foreground: oklch(0.35 0.15 255);
+  --destructive: oklch(0.55 0.22 25);
+  --destructive-foreground: oklch(0.98 0.01 25);
+  --border: oklch(0.91 0.02 255);
+  --input: oklch(0.91 0.02 255);
+  --ring: oklch(0.48 0.18 255);
+  
+  /* Chart Tokens */
+  --chart-1: oklch(0.55 0.18 255);
+  --chart-2: oklch(0.65 0.12 190);
+  --chart-3: oklch(0.45 0.15 230);
+  --chart-4: oklch(0.75 0.15 150);
+  --chart-5: oklch(0.85 0.12 50);
+  
+  /* Sidebar Tokens */
+  --sidebar: oklch(0.98 0.01 255);
+  --sidebar-foreground: oklch(0.25 0.05 255);
+  --sidebar-primary: oklch(0.48 0.18 255);
+  --sidebar-primary-foreground: oklch(1 0 0);
+  --sidebar-accent: oklch(0.93 0.04 255);
+  --sidebar-accent-foreground: oklch(0.35 0.15 255);
+  --sidebar-border: oklch(0.91 0.02 255);
+  --sidebar-ring: oklch(0.48 0.18 255);
+}
+
+.dark {
+  --background: oklch(0.12 0.03 255);
+  --foreground: oklch(0.95 0.01 255);
+  --card: oklch(0.15 0.03 255);
+  --card-foreground: oklch(0.95 0.01 255);
+  --popover: oklch(0.12 0.03 255);
+  --popover-foreground: oklch(0.95 0.01 255);
+  --primary: oklch(0.65 0.15 255);
+  --primary-foreground: oklch(0.1 0.05 255);
+  --secondary: oklch(0.22 0.04 255);
+  --secondary-foreground: oklch(0.9 0.05 255);
+  --muted: oklch(0.22 0.03 255);
+  --muted-foreground: oklch(0.7 0.03 255);
+  --accent: oklch(0.25 0.08 255);
+  --accent-foreground: oklch(0.95 0.02 255);
+  --destructive: oklch(0.45 0.18 25);
+  --destructive-foreground: oklch(0.98 0.01 25);
+  --border: oklch(0.25 0.03 255);
+  --input: oklch(0.25 0.03 255);
+  --ring: oklch(0.65 0.15 255);
+  
+  /* Chart Tokens */
+  --chart-1: oklch(0.65 0.15 255);
+  --chart-2: oklch(0.75 0.12 190);
+  --chart-3: oklch(0.55 0.15 230);
+  --chart-4: oklch(0.85 0.12 150);
+  --chart-5: oklch(0.95 0.1 50);
+  
+  /* Sidebar Tokens */
+  --sidebar: oklch(0.15 0.03 255);
+  --sidebar-foreground: oklch(0.9 0.03 255);
+  --sidebar-primary: oklch(0.65 0.15 255);
+  --sidebar-primary-foreground: oklch(0.1 0.05 255);
+  --sidebar-accent: oklch(0.25 0.08 255);
+  --sidebar-accent-foreground: oklch(0.95 0.02 255);
+  --sidebar-border: oklch(0.25 0.03 255);
+  --sidebar-ring: oklch(0.65 0.15 255);
+}
+
+@theme inline {
+  /* Shadcn Core Mapping */
+  --color-background: var(--background);
+  --color-foreground: var(--foreground);
+  --color-card: var(--card);
+  --color-card-foreground: var(--card-foreground);
+  --color-popover: var(--popover);
+  --color-popover-foreground: var(--popover-foreground);
+  --color-primary: var(--primary);
+  --color-primary-foreground: var(--primary-foreground);
+  --color-secondary: var(--secondary);
+  --color-secondary-foreground: var(--secondary-foreground);
+  --color-muted: var(--muted);
+  --color-muted-foreground: var(--muted-foreground);
+  --color-accent: var(--accent);
+  --color-accent-foreground: var(--accent-foreground);
+  --color-destructive: var(--destructive);
+  --color-destructive-foreground: var(--destructive-foreground);
+  --color-border: var(--border);
+  --color-input: var(--input);
+  --color-ring: var(--ring);
+
+  /* Charts Mapping */
+  --color-chart-1: var(--chart-1);
+  --color-chart-2: var(--chart-2);
+  --color-chart-3: var(--chart-3);
+  --color-chart-4: var(--chart-4);
+  --color-chart-5: var(--chart-5);
+
+  /* Sidebar Mapping */
+  --color-sidebar: var(--sidebar);
+  --color-sidebar-foreground: var(--sidebar-foreground);
+  --color-sidebar-primary: var(--sidebar-primary);
+  --color-sidebar-primary-foreground: var(--sidebar-primary-foreground);
+  --color-sidebar-accent: var(--sidebar-accent);
+  --color-sidebar-accent-foreground: var(--sidebar-accent-foreground);
+  --color-sidebar-border: var(--sidebar-border);
+  --color-sidebar-ring: var(--sidebar-ring);
+
+  /* Typography */
+  --font-sans: var(--font-sans);
+  --font-mono: var(--font-mono);
+
+  /* Radius */
+  --radius-lg: var(--radius);
+  --radius-md: calc(var(--radius) - 2px);
+  --radius-sm: calc(var(--radius) - 4px);
+  --radius-xl: calc(var(--radius) + 4px);
+}
+
+@layer base {
+  * {
+    @apply border-border outline-ring/50;
+  }
+
+  html {
+    @apply scroll-smooth antialiased;
+  }
+
+  body {
+    @apply bg-background text-foreground font-sans min-h-screen;
+    font-feature-settings: "cv02", "cv03", "cv04", "cv11";
+  }
+
+  h1, h2, h3, h4, h5, h6 {
+    @apply font-semibold tracking-tight;
+  }
+
+  code, pre {
+    @apply font-mono;
+  }
+
+  ::selection {
+    @apply bg-primary/20 text-primary;
+  }
+
+  ::-webkit-scrollbar {
+    width: 6px;
+    height: 6px;
+  }
+  ::-webkit-scrollbar-track {
+    @apply bg-transparent;
+  }
+  ::-webkit-scrollbar-thumb {
+    @apply bg-muted-foreground/20 rounded-full hover:bg-muted-foreground/40;
+  }
+}
